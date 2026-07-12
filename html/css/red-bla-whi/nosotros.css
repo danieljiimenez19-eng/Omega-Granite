@@ -1,0 +1,531 @@
+/* ==========================================================================
+   OMEGA GRANITE — HOJA DE ESTILOS INMUTABLE (MANTENIENDO TU HTML)
+   ========================================================================== */
+
+/* Variables de Entorno Visual: Combinación Elegante Negro, Dorado, Rojo y Blanco */
+:root {
+    --bg-primary: #161b22;    /* Gris Oxford Profundo (Elegante y opaco) */
+    --bg-secondary: #0f1216;  /* Negro / Gris Aún Más Oscuro para contraste sutil */
+    --bg-card: #21262d;       /* Gris Oxford Medio para Tarjetas y Formularios */
+    --accent-gold: #d4af37;   /* Dorado Elegante para los títulos principales solicitados */
+    --accent-wine: #721214;   /* Tu icónico Rojo Vino para detalles y hovers combinados */
+    --accent-hover: #590e10;  /* Rojo Vino Oscuro para estados hover secundarios */
+    --text-white: #f0f2f5;    /* Blanco Hueso Suave para lectura impecable */
+    --text-muted: #8b949e;    /* Gris Atenuado para textos secundarios */
+    
+    --font-titles: 'Playfair Display', Georgia, serif;
+    --font-body: 'Lato', 'Raleway', sans-serif;
+    --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght=300;400;700&family=Playfair+Display:wght=400;700&display=swap');
+
+/* Reset Estricto y Control de Desbordamientos */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    background-color: var(--bg-primary);
+    font-family: var(--font-body);
+    color: var(--text-white);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; /* Evita que cualquier elemento se salga del margen derecho */
+}
+
+body {
+    padding-top: 85px; /* Evita que la navbar fija oculte los títulos principales */
+}
+
+/* ==========================================================================
+   NAVBAR (INTACTA)
+   ========================================================================== */
+nav.navbar {
+    position: fixed; /* Cambiado a fixed para que proteja la navegación superior de forma limpia */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 85px; 
+    z-index: 9999; 
+    background-color: rgba(17, 22, 27, 0.95); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* Contenedor del menú: Alinea el Logo a la izquierda y los Links a la derecha */
+nav.navbar > .nav-container {
+    max-width: 1200px;
+    height: 85px;
+    margin: 0 auto;
+    padding: 0 25px;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between; /* Empuja el logo a la izq y enlaces a la der */
+}
+
+/* Lista de enlaces */
+nav.navbar > .nav-container > ul.nav-links {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    list-style: none;
+}
+
+/* Elementos de lista individuales */
+nav.navbar > .nav-container > ul.nav-links > li {
+    margin-left: 30px;
+}
+
+/* Enlaces base del menú */
+nav.navbar > .nav-container > ul.nav-links > li > a {
+    color: #ffffff;
+    text-decoration: none !important; 
+    font-size: 1rem;
+    text-transform: capitalize;
+    position: relative;
+    padding: 10px 0;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+/* LOGO BLANCO Y GRANDE: Elimina por completo cualquier rastro de hipervínculo visual */
+#Nombre_empresa {
+    font-family: var(--font-titles);
+    color: #ffffff !important;         /* Letras blancas solicitadas */
+    text-decoration: none !important;   /* Cero subrayados */
+    font-size: 1.8rem;                  /* Tamaño general grande */
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;                          /* Espacio entre el símbolo Omega y el texto */
+    cursor: default;                    /* Cambia el cursor para que no parezca un link común */
+}
+
+/* Asegura el estado del Logo si ya se hizo click en él */
+#Nombre_empresa:link,
+#Nombre_empresa:visited,
+#Nombre_empresa:hover,
+#Nombre_empresa:active {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+/* Símbolo Omega */
+#Nombre_empresa::before {
+    content: "Ω";
+    color: var(--accent-wine); /* Símbolo en Rojo Vino para destacar */
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+/* ENLACE INICIO: Mismo tamaño destacado */
+nav.navbar > .nav-container > ul.nav-links > li > a#inicio {
+    font-size: 1.25rem; 
+    font-weight: 700;
+    color: #ffffff !important; 
+}
+
+/* Animación de línea dorada en hover */
+nav.navbar > .nav-container > ul.nav-links > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-gold);
+    transition: width 0.3s var(--transition-smooth);
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a:hover {
+    color: var(--accent-gold);
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a#inicio:hover {
+    color: #ffffff !important; 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a:hover::after {
+    width: 100%;
+}
+
+/* link nosotros */
+#nosotros_link {
+    color: whitesmoke;
+    text-decoration: none;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.2rem;
+}
+#nosotros_link:hover {
+    color: var(--accent-gold);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   ESTRUCTURA DE BLOQUES: SECCIÓN NOSOTROS
+   ========================================================================== */
+#nosotros {
+    background-color: var(--bg-secondary);
+    padding: 80px 25px;
+    width: 100%;
+}
+
+#nosotros h1 {
+    font-family: var(--font-titles);
+    color: var(--accent-gold);
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Decoración fina bajo el título de Nosotros */
+#nosotros h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background-color: var(--accent-wine);
+    margin: 15px auto 0 auto;
+}
+
+#nosotros p {
+    max-width: 850px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    font-weight: 300;
+    color: var(--text-white);
+    text-align: justify;
+    letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   SECCIÓN EQUIPO Y VALORES (Alineación Horizontal y Mosaico Grande)
+   ========================================================================== */
+#ruben {
+    background-color: var(--bg-primary);
+    padding: 80px 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    /* Configuración Flexbox principal lado a lado */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; /* Alineación perfecta al centro vertical */
+    gap: 50px;
+}
+
+/* LADO IZQUIERDO: Textos e información de forma descendente y compacta */
+#ruben h2, #ruben h3, #ruben p {
+    text-align: left !important;
+}
+
+/* Encapsulamos conceptualmente los elementos de texto en su respectivo bloque de ancho */
+#ruben h2:nth-of-type(1),
+#ruben h3,
+#ruben p:nth-of-type(1),
+#ruben p:nth-of-type(2),
+#ruben p:nth-of-type(3),
+#ruben h2:nth-of-type(2),
+#ruben p:nth-of-type(4) {
+    max-width: 550px;
+    width: 100%;
+}
+
+#ruben h2 {
+    font-family: var(--font-titles);
+    color: var(--accent-gold);
+    font-size: 2.2rem;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+#ruben h2:first-of-type {
+    margin-top: 0; /* Limpia el margen superior del primer título */
+}
+
+#ruben h3 {
+    font-family: var(--font-titles);
+    color: var(--text-white);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#ruben p {
+    font-size: 1rem;
+    line-height: 1.4 !important; /* Compacta las líneas verticalmente */
+    letter-spacing: -0.01em;     /* Letras sutilmente más juntas */
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+/* El testimonio en cursiva de Rubén Aguirre */
+#ruben p:nth-of-type(3) {
+    color: var(--text-white);
+    font-style: italic;
+    border-left: 2px solid var(--accent-wine);
+    padding-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+/* GENERACIÓN DEL MOSAICO DE IMÁGENES (Lado Derecho) */
+/* Agrupamos de forma selectiva las imágenes del HTML dentro de un Grid automático */
+#ruben img {
+    display: none; /* Ocultamos su comportamiento de bloque tradicional */
+}
+
+/* Inyectamos un pseudo-mosaico simulado o capturamos las imágenes del HTML de manera controlada */
+#ruben {
+    position: relative;
+}
+
+/* Estilo unificado para las imágenes reales que agregues en el HTML */
+#ruben img {
+    display: block !important;
+    width: 100% !important;
+    height: 220px; /* Tamaño grande y controlado */
+    object-fit: cover !important;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s var(--transition-smooth);
+}
+
+#ruben img:hover {
+    transform: scale(1.02);
+    border-color: var(--accent-gold);
+}
+
+/* Contenedor dinámico e implícito para las 4 imágenes del lado derecho */
+/* Para que el HTML actual funcione sin cambiar nada de etiquetas, convertimos los elementos sobrantes en un grid flexible */
+@media (min-width: 993px) {
+    /* Como tus imágenes están sueltas en el HTML junto al texto, crearemos un contenedor virtual aislando el lado derecho */
+    /* Para una maquetación óptima sin romper tu estructura, le damos formato de columna independiente */
+    
+    #ruben {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 50px;
+    }
+
+    /* Agrupamos los elementos del lado derecho usando selectores avanzados */
+    #ruben img {
+        float: right;
+    }
+    
+    /* Para ordenar el flujo del HTML nativo tuyo, las imágenes se acomodan en un sub-bloque ordenado */
+    /* Modificamos el layout para que actúen como un collage ordenado de 2x2 en la zona derecha */
+    #ruben {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    /* Solución estructural limpia para separar el texto de las imágenes usando flexbox avanzado */
+    #ruben {
+        display: grid;
+        grid-template-columns: 55% 40%;
+        gap: 5%;
+        align-items: center;
+    }
+    
+    /* Las imágenes se auto-acomodan en el espacio derecho asignado */
+    #ruben img {
+        grid-column: 2;
+        margin-bottom: 15px;
+        height: 180px;
+    }
+    
+    /* Si deseas que se organicen exactamente en cuadrícula 2x2, este ajuste lo fuerza de forma limpia: */
+    #ruben {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    /* Forzamos que los textos se queden agrupados a la izquierda */
+    #ruben h2, #ruben h3, #ruben p {
+        width: 50%;
+        margin-right: auto;
+    }
+    
+    /* Forzamos que las imágenes se organicen flotando a la derecha en bloque compacto */
+    #ruben img {
+        width: 23%;
+        height: 200px;
+        display: inline-block !important;
+        margin: 1%;
+    }
+}
+
+/* ==========================================================================
+   CONTROL DE IMÁGENES SECCIÓN EQUIPO (Aislamiento de Valores)
+   ========================================================================== */
+
+/* Contenedor base vuelve a su flujo normal hacia abajo */
+#ruben {
+    display: block !important;
+    background-color: var(--bg-primary);
+    padding: 80px 25px;
+    max-width: 900px; /* Ancho ideal para que el texto de valores y la fila se vean estéticos */
+    margin: 0 auto;
+}
+
+/* Títulos y párrafos en orden descendente */
+#ruben h2, #ruben h3, #ruben p {
+    text-align: left !important;
+    width: 100%;
+}
+
+/* PRIMERA IMAGEN (La de Rubén): Se queda abajo de su texto ocupando el ancho completo */
+#ruben img:nth-of-type(1) {
+    display: block !important;
+    width: 100% !important;
+    height: 350px !important;
+    object-fit: cover !important;
+    border-radius: 12px;
+    margin: 20px 0 50px 0; /* Espacio abajo para separarla de 'Nuestro equipo y valores' */
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* LAS OTRAS IMÁGENES (Las 3 de abajo): Se ponen una al lado de la otra */
+#ruben img:not(:nth-of-type(1)) {
+    display: inline-block !important;
+    /* Dividimos el 100% entre 3 (menos los márgenes) para que queden perfectamente alineadas */
+    width: calc(33.33% - 14px) !important; 
+    height: 200px !important; /* Altura fija para que se vean simétricas */
+    object-fit: cover !important;
+    margin: 5px;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s var(--transition-smooth);
+}
+
+#ruben img:not(:nth-of-type(1)):hover {
+    transform: scale(1.04);
+    border-color: var(--accent-gold);
+}
+
+/* ==========================================================================
+   RESPONSIVO (Para celulares: las 3 imágenes se apilan para no amontonarse)
+   ========================================================================== */
+@media (max-width: 768px) {
+    #ruben img:not(:nth-of-type(1)) {
+        width: 100% !important;
+        margin: 10px 0;
+        height: 180px !important;
+    }
+}
+/* ==========================================================================
+   SECCIÓN: CTA CONTACTO (Cuadro Blanco Extendido, Texto Grande y Botón Blanco)
+   ========================================================================== */
+#cta-contacto,
+#ruben + section,
+#nosotros ~ section {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; /* Centra absolutamente todo el contenido horizontalmente */
+    justify-content: center !important;
+    
+    width: 100% !important;
+    max-width: none !important; /* Rompe los límites para extenderse por toda la página de lado a lado */
+    background-color: #e8e8e8 !important; /* Fondo blanco opaco estilo tiza */
+    
+    /* BORDES ROJOS: Líneas sólidas gruesas arriba y abajo */
+    border-top: 6px solid #6b141d !important;
+    border-bottom: 6px solid #6b141d !important;
+    border-left: none !important;
+    border-right: none !important;
+    
+    padding: 80px 20px !important; /* Espaciado interno generoso y bien distribuido */
+    text-align: center !important;
+    margin: 60px 0 0 0 !important; /* Se alinea al ras de la pantalla sin dejar huecos */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Título interno de la sección del CTA */
+#cta-contacto h2,
+#ruben + section h2 {
+    color: #111418 !important;
+    font-size: 2rem !important;
+    margin-bottom: 20px !important;
+}
+
+/* Incremento de media talla a TODO el texto de información y alineación centrada */
+#cta-contacto p,
+#ruben + section p,
+section p {
+    color: #dee3e9 !important; /* Color base oscuro para el texto plano */
+    font-family: 'Lato', 'Raleway', sans-serif !important;
+    font-size: 1.4 rem !important; /* Media talla más grande para todo el bloque */
+    line-height: 2.5 !important; /* Excelente espacio distribuido entre renglones */
+    max-width: 800px !important;
+    margin: 0 auto 45px auto !important;
+    text-align: center !important;
+}
+
+/* Las palabras clave (Teléfono, Correo, Horario) en su color rojo vino original */
+#cta-contacto p strong,
+#ruben + section p strong,
+section p strong {
+    color: #6b141d !important; /* Rojo Guinda original de la paleta */
+}
+
+/* ==========================================================================
+   FUERZA BRUTA DEFINITIVA PARA EL BOTÓN DE COTIZACIÓN (CUADRADO BLANCO)
+   ========================================================================== */
+#cta-contacto a#btn-solicitar-cotizacion,
+main section #btn-solicitar-cotizacion,
+a[href="main.html"]#btn-solicitar-cotizacion,
+#cotizacion_link {
+    display: block !important; /* Permite que el margin auto responda correctamente */
+    width: max-content !important; /* Evita que el botón se estire a lo ancho de la pantalla */
+    visibility: visible !important;
+    
+    /* Reseteo Absoluto de Enlace Tradicional */
+    text-decoration: none !important; /* ELIMINA COMPLETAMENTE LA LÍNEA POR DEBAJO */
+    outline: none !important;
+    
+    /* Tipografía y Tamaño Grandes */
+    font-family: 'Lato', 'Raleway', sans-serif !important;
+   
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2.5px !important;
+    
+    /* Colores en Estado Normal (Cuadrado Blanco Sólido) */
+    background-color: #ffffff !important; /* Fondo Blanco */
+    color: #111418 !important;            /* Letras Negras */
+    border: 2px solid #111418 !important;  /* Borde Negro Estructural */
+    
+    /* Caja y Centrado */
+    padding: 16px 55px !important; /* Estructura de cuadrado bien proporcionado */
+    margin: 30px auto 0 auto !important; /* Centrado horizontal perfecto */
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Fuerza Bruta para el Estado Hover (Efecto de Llenado Rojo) */
+#cta-contacto a#btn-solicitar-cotizacion:hover,
+main section #btn-solicitar-cotizacion:hover,
+a[href="main.html"]#btn-solicitar-cotizacion:hover,
+#cotizacion_link:hover {
+    background-color: #6b141d !important; /* Cambia a Rojo Vino */
+    border-color: #6b141d !important;     /* Borde cambia a Rojo Vino */
+    color: #ffffff !important;            /* Letras cambian a Blanco puro */
+    text-decoration: none !important;     /* Evita que los navegadores fuercen la línea */
+    box-shadow: 0 8px 25px rgba(107, 20, 29, 0.4) !important;
+}

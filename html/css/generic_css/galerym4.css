@@ -1,0 +1,293 @@
+/* ==========================================================================
+   OMEGA GRANITE — SUBPÁGINA GALERÍA (DISEÑO EDITORIAL ASIMÉTRICO)
+   ========================================================================== */
+
+:root {
+    /* Base de Piedras Volcánicas y Carbón */
+    --bg-primary: #191817;       /* Negro Grafito profundo */
+    --bg-secondary: #22201e;     /* Pizarra texturizada */
+    --bg-card: #2a2825;          /* Bloques de piedra maciza */
+    
+    /* Tonos Minerales de Impacto */
+    --mineral-red: #8b251e;      /* Rojo Óxido / Granito Iron Red */
+    --mineral-blue: #1b365d;     /* Azul Sodalita Profundo / Cuarcita Azul */
+    --accent-gold: #c5a059;      /* Dorado Latón Envejecido para detalles */
+    
+    --text-white: #f5f4f0;       /* Blanco Calacatta para textos principales */
+    --text-muted: #8e877f;       /* Gris Ceniza para descripciones secundarias */
+    
+    --font-titles: 'Playfair Display', Georgia, serif;
+    --font-body: 'Lato', 'Raleway', sans-serif;
+    --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+/* Reset Estricto */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    background-color: var(--bg-primary);
+    font-family: var(--font-body);
+    color: var(--text-white);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    padding-top: 95px;
+}
+
+/* --------------------------------------------------------------------------
+   NAVBAR: Bloque Macizo Fijo
+   -------------------------------------------------------------------------- */
+nav.navbar {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 95px; 
+    z-index: 9999; 
+    background-color: #11100f; 
+    border-bottom: 3px solid var(--mineral-red); 
+    display: flex;
+    align-items: center;
+}
+
+nav.navbar > .nav-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between;
+}
+
+#Nombre_empresa {
+    font-family: var(--font-titles);
+    color: var(--text-white) !important;         
+    text-decoration: none !important;   
+    font-size: 1.8rem;                  
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;                          
+}
+
+#Nombre_empresa::before {
+    content: "Ω";
+    font-family: var(--font-titles);
+    color: var(--text-white);
+    background-color: var(--mineral-red); 
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 400;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav.navbar > .nav-container > ul.nav-links {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    list-style: none;
+}
+
+nav.navbar > .nav-container > ul.nav-links > li {
+    margin-left: 35px;
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a {
+    color: var(--text-white);
+    text-decoration: none !important; 
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 10px 0;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a:hover {
+    color: var(--accent-gold);
+}
+
+/* --------------------------------------------------------------------------
+   ESTRUCTURA DE SECCIONES ALTERNADAS
+   -------------------------------------------------------------------------- */
+section {
+    position: relative;
+    width: 100%;
+    padding: 140px 40px;
+}
+
+#cocinas, #baños, #varios {
+    background-color: var(--bg-primary);
+}
+
+#recamarras, #chimeneas {
+    background-color: var(--bg-secondary);
+}
+
+.category-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    /* Master grid setup to build the asymmetrical block layout */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: start;
+}
+
+/* --------------------------------------------------------------------------
+   TITULARES ESTILO MUSEO / EXPOSICIÓN
+   -------------------------------------------------------------------------- */
+.category-container h2 {
+    grid-column: span 3;
+    font-family: var(--font-titles);
+    color: var(--text-white);
+    font-size: 4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.category-container h3 {
+    grid-column: span 3;
+    font-family: var(--font-titles);
+    color: var(--accent-gold);
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Decorative minimalist linework next to material types */
+.category-container h3::before,
+.category-container h3::after {
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background-color: rgba(197, 160, 89, 0.3);
+}
+
+.category-container h3:first-of-type {
+    margin-top: 0;
+}
+
+/* --------------------------------------------------------------------------
+   DYNAMICO LOOKBOOK SLAB LAYOUT (3 Images Per Group)
+   -------------------------------------------------------------------------- */
+.category-container img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    background-color: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.6s var(--transition-smooth), 
+                box-shadow 0.6s var(--transition-smooth),
+                border-color 0.4s ease;
+}
+
+/* --- Image 1: The Massive Hero Slab (Spans 2 columns wide) --- */
+.category-container img:nth-of-type(3n+1) {
+    grid-column: span 2;
+    height: 560px; /* Tall, dominant focus element */
+}
+
+/* --- Image 2 & 3: Stacked Editorial Side-Shots (Sits in the remaining column) --- */
+.category-container img:nth-of-type(3n+2) {
+    grid-column: span 1;
+    height: 265px;
+    margin-bottom: 30px; /* Even spacing between stack pieces */
+}
+
+.category-container img:nth-of-type(3n) {
+    grid-column: span 1;
+    height: 265px;
+}
+
+/* --- Pure Polished Stone Interaction --- */
+.category-container img:hover {
+    transform: translateY(-8px) scale(1.01);
+    border-color: var(--accent-gold);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    z-index: 5;
+    cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN (Flawless Breakdown)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+    .category-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .category-container h2,
+    .category-container h3 {
+        grid-column: span 2;
+    }
+
+    /* Normalizes layout into a clean dual-column grid for tablets */
+    .category-container img:nth-of-type(3n+1),
+    .category-container img:nth-of-type(3n+2),
+    .category-container img:nth-of-type(3n) {
+        grid-column: span 1;
+        height: 340px;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    nav.navbar > .nav-container > ul.nav-links > li:not(:nth-child(4)) { 
+        display: none; 
+    }
+
+    section {
+        padding: 80px 20px;
+    }
+
+    .category-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .category-container h2 {
+        font-size: 2.6rem;
+    }
+
+    .category-container h2,
+    .category-container h3 {
+        grid-column: span 1;
+    }
+
+    .category-container img:nth-of-type(n) {
+        height: 280px;
+    }
+}

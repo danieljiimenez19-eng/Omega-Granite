@@ -1,0 +1,301 @@
+/* ==========================================================================
+   OMEGA GRANITE — HOJA DE ESTILOS COMPLETA (NOSOTROS + NAVBAR)
+   ========================================================================== */
+
+/* Variables de Entorno Visual */
+:root {
+    --bg-primary: #12110f;    
+    --bg-secondary: #1a1816;  
+    --bg-card: #22201d;       
+    --accent-gold: #d4af37;   
+    --text-white: #f4f1ea;    
+    --text-muted: #a69e94;    
+    
+    --font-titles: 'Playfair Display', Georgia, serif;
+    --font-body: 'Lato', 'Raleway', sans-serif;
+    --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* Reset Estricto y Control de Desbordamientos */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    background-color: var(--bg-primary);
+    font-family: var(--font-body);
+    color: var(--text-white);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; 
+}
+
+/* ==========================================================================
+   NAVBAR INTEGRADA
+   ========================================================================== */
+nav.navbar {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 85px; 
+    z-index: 9999; 
+    background-color: rgba(18, 17, 15, 0.95); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Contenedor del menú: Logo a la izquierda, Links a la derecha */
+nav.navbar > .nav-container {
+    max-width: 1200px;
+    height: 85px;
+    margin: 0 auto;
+    padding: 0 25px;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between; 
+}
+
+/* Lista de enlaces */
+nav.navbar > .nav-container > ul.nav-links {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    list-style: none;
+}
+
+/* Elementos de lista individuales */
+nav.navbar > .nav-container > ul.nav-links > li {
+    margin-left: 30px;
+}
+
+/* Enlaces base del menú */
+nav.navbar > .nav-container > ul.nav-links > li > a {
+    color: var(--text-white);
+    text-decoration: none !important; 
+    font-size: 1rem;
+    text-transform: capitalize;
+    position: relative;
+    padding: 10px 0;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+/* LOGO INTEGRADO CON EL SÍMBOLO OMEGA */
+#Nombre_empresa {
+    font-family: var(--font-titles);
+    color: #ffffff !important;         
+    text-decoration: none !important;   
+    font-size: 1.8rem;                  
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;                          
+    cursor: pointer;                    
+}
+
+/* Símbolo Omega automático antes del texto del logo */
+#Nombre_empresa::before {
+    content: "Ω";
+    color: var(--accent-gold);
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+/* Resaltado especial para el enlace activo o Inicio */
+nav.navbar > .nav-container > ul.nav-links > li > a#inicio {
+    font-size: 1.1rem; 
+    font-weight: 700;
+}
+
+/* Animación de línea dorada en hover para el menú */
+nav.navbar > .nav-container > ul.nav-links > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-gold);
+    transition: width 0.3s var(--transition-smooth);
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a:hover {
+    color: var(--accent-gold);
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a:hover::after {
+    width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   SECCIÓN: NOSOTROS (#nosotros)
+   -------------------------------------------------------------------------- */
+#nosotros {
+    background-color: var(--bg-secondary); 
+    padding: 160px 20px 100px 20px; /* Margen superior amplio para no quedar oculto bajo la navbar */
+    text-align: center;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+#nosotros h1 {
+    font-family: var(--font-titles);
+    color: var(--accent-gold);
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+#nosotros p {
+    max-width: 850px;
+    margin: 15px auto 0 auto;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    font-weight: 300;
+    color: var(--text-white);
+}
+
+/* Separador elegante dorado inferior */
+#nosotros::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 2px;
+    background-color: var(--accent-gold);
+    margin: 40px auto 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   SECCIÓN: EQUIPO (#ruben)
+   -------------------------------------------------------------------------- */
+#ruben {
+    background-color: var(--bg-primary);
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+
+#ruben h2 {
+    font-family: var(--font-titles);
+    color: var(--accent-gold);
+    font-size: 2.4rem;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#ruben h3 {
+    font-family: var(--font-titles);
+    color: var(--text-white);
+    font-size: 1.8rem;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+#ruben p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    max-width: 900px;
+}
+
+/* Estilo para la Frase Destacada de Rubén Aguirre */
+#ruben p:nth-of-type(2) {
+    font-family: var(--font-titles);
+    color: var(--accent-gold);
+    font-style: italic;
+    font-size: 1.2rem;
+    border-left: 2px solid var(--accent-gold);
+    padding-left: 20px;
+    margin: 30px 0;
+}
+
+/* Separación visual para el segundo H2 (Equipo y Valores) */
+#ruben h2:nth-of-type(2) {
+    margin-top: 90px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Párrafo específico de la subsección Valores */
+#ruben h2:nth-of-type(2) ~ p {
+    color: var(--text-white);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* --------------------------------------------------------------------------
+   MULTIMEDIA E IMÁGENES
+   -------------------------------------------------------------------------- */
+#ruben img {
+    width: 100%;
+    max-width: 32%; /* 3 columnas en computadoras residenciales */
+    height: 250px;
+    object-fit: cover;
+    margin: 30px 0.5% 10px 0.5%;
+    display: inline-block;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    background-color: var(--bg-card); 
+    transition: transform 0.4s var(--transition-smooth), border-color 0.4s ease;
+}
+
+/* Imagen de retrato principal de Rubén Aguirre */
+#ruben h3 ~ img:first-of-type {
+    display: block;
+    max-width: 400px;
+    height: 450px;
+    margin: 30px 0 60px 0;
+}
+
+#ruben img:hover {
+    transform: scale(1.02);
+    border-color: var(--accent-gold);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN (MÓVILES)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    /* Navbar compacta */
+    nav.navbar > .nav-container > ul.nav-links > li:not(:nth-child(1)):not(:nth-child(2)) { 
+        display: none; 
+    }
+
+    #nosotros {
+        padding: 130px 20px 60px 20px;
+    }
+
+    #nosotros h1 {
+        font-size: 2.3rem;
+    }
+
+    #ruben {
+        padding: 60px 20px;
+    }
+
+    #ruben h2 {
+        font-size: 1.9rem;
+    }
+
+    /* Las imágenes se adaptan al 100% de la pantalla en móviles */
+    #ruben img, 
+    #ruben h3 ~ img:first-of-type {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        min-height: 250px;
+        margin: 15px 0;
+        display: block;
+    }
+}

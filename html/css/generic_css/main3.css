@@ -1,0 +1,396 @@
+/* ==========================================================================
+   OMEGA GRANITE — ARQUITECTURA EDITORIAL ASIMÉTRICA (CONCEPT 2026)
+   ========================================================================== */
+
+:root {
+    /* Paleta Mineral Orgánica (Cero tonos negros o blancos puros) */
+    --bg-primary: #dcd9d4;       /* Gris Caliza Lavada / Cemento texturizado */
+    --bg-secondary: #cecac3;     /* Gris Cantera denso para contraste */
+    --accent-gold: #b08d57;      /* Ocre Mineral / Veta de bronce mate */
+    --text-dark: #2b2927;        /* Gris Pizarra Oscuro para máxima elegancia */
+    --text-muted: #615d59;       /* Gris Arcilla para detalles del catálogo */
+    
+    --font-titles: 'Playfair Display', Georgia, serif;
+    --font-body: 'Lato', 'Raleway', sans-serif;
+    --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+/* Reset Estricto */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    background-color: var(--bg-primary);
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   NAVBAR: Distribución de Bloque Editorial Sólido
+   -------------------------------------------------------------------------- */
+nav.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px; 
+    z-index: 9999; 
+    background-color: var(--bg-secondary); /* Sólido, integrado al tono piedra */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+}
+
+nav.navbar > .nav-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* LOGO: Tipo de imprenta clásico, limpio y monumental */
+#Nombre_empresa {
+    font-family: var(--font-titles);
+    color: var(--text-dark) !important;         
+    text-decoration: none !important;   
+    font-size: 1.8rem;                  
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: default;                    
+}
+
+#Nombre_empresa:link, #Nombre_empresa:visited, #Nombre_empresa:hover, #Nombre_empresa:active {
+    color: var(--text-dark) !important;
+    text-decoration: none !important;
+}
+
+/* MENÚ ASIMÉTRICO ALINEADO A LA DERECHA */
+nav.navbar > .nav-container > ul.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 40px;
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a {
+    color: var(--text-dark);
+    text-decoration: none !important; 
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--accent-gold);
+    transition: width 0.3s var(--transition-smooth);
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a:hover {
+    color: var(--accent-gold);
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a:hover::after {
+    width: 100%;
+}
+
+/* Resalte de página actual */
+nav.navbar > .nav-container > ul.nav-links > li > a#inicio {
+    color: var(--accent-gold) !important;
+}
+
+/* --------------------------------------------------------------------------
+   HERO SECTION: Imagen Protagonista al 100% Sin Filtros
+   -------------------------------------------------------------------------- */
+#hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alineación a la izquierda estilo cartelera */
+    justify-content: flex-end; /* Texto abajo para no tapar la casa/escalera */
+    padding: 0 0 80px 8%;
+    /* Imagen totalmente limpia y nítida */
+    background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+}
+
+#hero img { display: none; }
+
+#hero p {
+    font-family: var(--font-titles);
+    color: #ffffff; /* Blanco puro solo aquí para romper con la imagen */
+    font-size: 5.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    max-width: 800px;
+    text-align: left;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Despega el texto limpiamente */
+}
+
+#button_call {
+    font-family: var(--font-body);
+    background-color: var(--text-dark);
+    color: var(--bg-primary);
+    border: none;
+    padding: 20px 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#button_call:hover {
+    background-color: var(--accent-gold);
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   SECCIONES GENERALES (Distribución Asimétrica de Espacios)
+   -------------------------------------------------------------------------- */
+#nosotros, #servicios, #galeria, #cotizacion {
+    position: relative;
+    width: 100%;
+    padding: 160px 8%;
+    clear: both;
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   NOSOTROS: Layout de Catálogo de Arte
+   -------------------------------------------------------------------------- */
+#nosotros {
+    background-color: var(--bg-secondary); 
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Desplazado completamente a la derecha */
+    gap: 60px;
+}
+
+#nosotros::before {
+    content: "[ 01 / ORIGEN ]";
+    font-family: var(--font-body);
+    color: var(--accent-gold);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+#nosotros p {
+    font-family: var(--font-titles);
+    font-size: 2.4rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--text-dark);
+    text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+   SERVICIOS: Lista Abierta Minimalista (Cero Cajas/Tarjetas)
+   -------------------------------------------------------------------------- */
+#servicios {
+    background-color: var(--bg-primary);
+}
+
+.section-title {
+    font-family: var(--font-titles);
+    color: var(--text-dark);
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 90px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Transformamos el grid en una lista minimalista horizontal/vertical */
+.services-grid {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Eliminamos el look de tarjeta pesada */
+.service-card {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    padding: 40px 0;
+    display: grid;
+    grid-template-columns: 80px 1fr 2fr; /* Estructura de fila de catálogo */
+    align-items: center;
+    gap: 40px;
+    transform: none !important;
+    transition: padding-left 0.4s var(--transition-smooth);
+}
+
+.service-card:hover {
+    padding-left: 30px; /* Desplazamiento elegante al pasar el mouse */
+}
+
+.service-num {
+    font-family: var(--font-body);
+    color: var(--accent-gold);
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.service-card h3 {
+    font-family: var(--font-titles);
+    color: var(--text-dark);
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.service-card p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   GALERÍA: Mosaico Asimétrico Sólido
+   -------------------------------------------------------------------------- */
+#galeria {
+    background-color: var(--bg-secondary);
+}
+
+#galeria::before {
+    content: "EXHIBICIÓN DE TRABAJOS";
+    display: block;
+    font-family: var(--font-body);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 70px;
+}
+
+/* Imágenes con anchos alternados para romper la monotonía */
+#galeria img {
+    width: calc(50% - 20px);
+    height: 550px;
+    object-fit: cover;
+    margin: 10px;
+    filter: grayscale(0.2);
+    transition: filter 0.4s ease, transform 0.4s var(--transition-smooth);
+}
+
+#galeria img:nth-child(even) {
+    width: calc(40% - 20px); /* Unas más chicas que otras para asimetría */
+}
+
+#galeria img:nth-child(odd) {
+    width: calc(58% - 20px);
+}
+
+#galeria img:hover {
+    filter: grayscale(0);
+    transform: scale(1.01);
+}
+
+/* --------------------------------------------------------------------------
+   COTIZACIÓN
+   -------------------------------------------------------------------------- */
+#cotizacion { background-color: var(--bg-primary); }
+#cotizacion::after, #cotizacion::before { display: none !important; }
+
+/* --------------------------------------------------------------------------
+   FOOTER: Cierre de Bloque Caliza de Alta Gama
+   -------------------------------------------------------------------------- */
+footer {
+    background-color: #201e1d; /* Gris carbón mineralizado para cerrar */
+    padding: 100px 8% 40px 8%;
+    color: #948f8a;
+}
+
+.footer-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 60px;
+}
+
+.footer-brand h3 {
+    color: var(--bg-primary);
+    font-family: var(--font-titles);
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.footer-brand p {
+    line-height: 1.7;
+}
+
+.footer-contact strong { color: #ffffff; }
+
+.footer-social a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+}
+
+.footer-bottom {
+    margin-top: 80px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 30px;
+    text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN (Móviles)
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    nav.navbar > .nav-container { padding: 0 20px; }
+    nav.navbar > .nav-container > ul.nav-links { display: none; } /* Menú limpio en móvil */
+    
+    #hero { padding-left: 40px; }
+    #hero p { font-size: 3rem; }
+    
+    #nosotros { grid-template-columns: 1fr; gap: 20px; }
+    #nosotros p { font-size: 1.6rem; }
+    
+    .service-card {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 30px 0;
+    }
+    
+    #galeria img, #galeria img:nth-child(even), #galeria img:nth-child(odd) { 
+        width: 100%; 
+        height: 350px; 
+        margin: 15px 0; 
+    }
+}

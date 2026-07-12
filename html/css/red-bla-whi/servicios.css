@@ -1,0 +1,419 @@
+/* ==========================================================================
+   OMEGA GRANITE — HOJA DE ESTILOS: SERVICIOS 
+   ========================================================================== */
+
+/* Variables de Entorno Visual con la Paleta de Lujo */
+:root {
+    --bg-primary: #0d0c0b;       /* Negro Profundo de fondo */
+    --bg-secondary: #1a1512;     /* Negro con matiz cálido */
+    --bg-card: #1f1412;          /* Fondo de tarjeta sutilmente rojizo/oscuro */
+    --accent-wine: #6b141d;      /* Rojo Vino / Guinda Elegante */
+    --accent-gold: #d4af37;      /* Dorado Premium */
+    --text-white: #f5f4f0;       /* Blanco Hueso (No lastima la vista) */
+    --text-muted: #bdae9e;       /* Texto suave secundario */
+    
+    --font-titles: 'Playfair Display', Georgia, serif;
+    --font-body: 'Lato', 'Raleway', sans-serif;
+    --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght=300;400;700&family=Playfair+Display:wght=400;700&display=swap');
+
+/* Reset Estricto y Comportamiento Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    background-color: var(--bg-primary);
+    font-family: var(--font-body);
+    color: var(--text-white);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+hr {
+    display: none; /* Ocultamos los hr del HTML */
+}
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+.navbar {
+    background-color: rgba(13, 12, 11, 0.96);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+    padding: 20px 40px;
+    width: 100%;
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-titles);
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: var(--accent-gold);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li:not(:last-child)::after {
+    content: "•";
+    color: var(--accent-wine);
+    margin-left: 15px;
+    font-size: 0.8rem;
+}
+
+.nav-links li a {
+    color: var(--text-white);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    padding: 8px 12px;
+    display: inline-block;
+    transition: color 0.3s var(--transition-smooth), transform 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--accent-gold);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   MAIN, INTRODUCCIÓN Y CONTENEDOR EN REJILLA (GRID)
+   ========================================================================== */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Intro principal (Nuestros Servicios) */
+main > section:first-of-type {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+main > section:first-of-type h2 {
+    font-family: var(--font-titles);
+    color: var(--accent-gold); 
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+main > section:first-of-type p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-white);
+    font-weight: 300;
+}
+
+/* Tarjetas de Servicio del 01 al 06 */
+main > section:not(:first-of-type):not(:nth-last-of-type(2)):not(:last-of-type) {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(212, 175, 55, 0.15); 
+    padding: 0;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column; 
+    overflow: hidden;
+    transition: transform 0.4s var(--transition-smooth), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Estructura GRID para pantallas grandes (2 columnas) */
+@media (min-width: 769px) {
+    main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 30px;
+    }
+    
+    .navbar {
+        grid-column: span 2;
+    }
+
+    main > section:first-of-type,
+    main > section:nth-last-of-type(2),
+    main > section:last-of-type {
+        grid-column: span 2;
+    }
+}
+
+/* Efectos al pasar el mouse por las tarjetas */
+main > section:not(:first-of-type):not(:nth-last-of-type(2)):not(:last-of-type):hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-wine);
+    box-shadow: 0 10px 30px rgba(107, 20, 29, 0.25);
+}
+
+/* Títulos de las tarjetas (01 - Diseño, etc.) */
+main > section h3 {
+    font-family: var(--font-titles);
+    color: var(--text-white); 
+    background-color: var(--accent-wine); 
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding: 25px 25px 15px 25px;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--accent-gold); 
+}
+
+/* Imágenes dentro de las tarjetas */
+main > section img {
+    width: 100%;
+    height: 240px; 
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    filter: grayscale(15%); 
+}
+
+/* Párrafo descriptivo dentro de la tarjeta */
+main > section h3 + img + p {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--text-white);
+    padding: 25px 25px 15px 25px;
+}
+
+/* Listas de beneficios dentro de la tarjeta */
+main > section ul {
+    list-style: none;
+    padding: 0 25px 30px 25px;
+    margin-top: auto; 
+}
+
+main > section ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+main > section ul li::before {
+    content: "▪";
+    position: absolute;
+    left: 0;
+    top: -1px;
+    color: var(--accent-gold);
+}
+
+/* ==========================================================================
+   SECCIÓN: POR QUÉ ELEGIRNOS (Fondo Blanco Opaco / Estilo Tiza)
+   ========================================================================== */
+main > section:nth-last-of-type(2) {
+    background-color: #e8e8e8 !important; 
+    border: 1px solid rgba(17, 20, 24, 0.1); 
+    padding: 50px 40px;
+    margin-top: 50px;
+    border-radius: 4px;
+}
+
+main > section:nth-last-of-type(2) h2 {
+    font-family: var(--font-titles);
+    color: #111418 !important; 
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+main > section:nth-last-of-type(2) ul {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 0;
+}
+
+main > section:nth-last-of-type(2) ul li {
+    padding-left: 0;
+    color: #2c3035 !important; 
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border-bottom: 1px solid rgba(17, 20, 24, 0.1); 
+    padding-bottom: 15px;
+}
+
+main > section:nth-last-of-type(2) ul li:last-child {
+    border-bottom: none;
+}
+
+main > section:nth-last-of-type(2) ul li::before {
+    display: none; /* Desactivamos los cuadros dorados flotantes de arriba */
+}
+
+main > section:nth-last-of-type(2) ul li strong {
+    color: var(--accent-wine) !important; 
+    font-family: var(--font-titles);
+    font-size: 1.15rem;
+    margin-bottom: 4px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* ==========================================================================
+   SECCIÓN: CTA CONTACTO / COTIZACIÓN (Fondo Blanco Opaco / Estilo Tiza)
+   ========================================================================== */
+main > section:last-of-type {
+    text-align: center;
+    background-color: #e8e8e8 !important; 
+    border-top: 4px solid var(--accent-wine); 
+    border-bottom: 2px solid var(--accent-gold); 
+    padding: 60px 40px;
+    width: 100%;
+    margin-top: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+main > section:last-of-type h2 {
+    font-family: var(--font-titles);
+    color: #111418 !important; 
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+main > section:last-of-type p:first-of-type {
+    color: #50565e !important; 
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+main > section:last-of-type p:nth-of-type(2) {
+    color: #111418 !important; 
+    font-size: 1rem;
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+main > section:last-of-type p strong {
+    color: var(--accent-wine) !important; 
+}
+
+/* Botón de Solicitud de Cotización */
+main > section:last-of-type a {
+    display: inline-block;
+    font-family: var(--font-body);
+    background-color: transparent;
+    color: #111418 !important; 
+    border: 2px solid var(--accent-wine); 
+    padding: 14px 45px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: background-color 0.4s var(--transition-smooth), border-color 0.4s ease, color 0.3s ease;
+}
+
+main > section:last-of-type a:hover {
+    background-color: var(--accent-wine) !important;
+    border-color: var(--accent-wine) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 20px rgba(107, 20, 29, 0.2);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+    background-color: #060505; 
+    border-top: 1px solid rgba(107, 20, 29, 0.4); 
+    padding: 40px 20px;
+    text-align: center;
+}
+
+footer p:first-of-type {
+    color: var(--text-white);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+footer p:last-of-type {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   RESPONSIVE NAVBAR & GLOBAL DESIGN (Ajustes para Móviles)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    .nav-links li:not(:last-child)::after {
+        display: none;
+    }
+    .nav-links li a {
+        font-size: 0.85rem;
+        padding: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+    main {
+        display: flex;
+        flex-direction: column;
+        padding: 40px 15px;
+    }
+    main > section:first-of-type h2 {
+        font-size: 2.2rem;
+    }
+    main > section:not(:first-of-type):not(:nth-last-of-type(2)):not(:last-of-type) {
+        margin-bottom: 30px;
+    }
+    main > section img {
+        height: 200px;
+    }
+    main > section:nth-last-of-type(2) {
+        padding: 35px 20px;
+    }
+}
+
+

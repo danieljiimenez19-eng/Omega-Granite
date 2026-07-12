@@ -1,0 +1,367 @@
+/* ==========================================================================
+   OMEGA GRANITE — HOJA DE ESTILOS: GRIS SEDA Y OXFORD (MANTIENE LÍNEAS ROJAS)
+   ========================================================================== */
+
+/* Variables de Entorno Visual Inmutables */
+:root {
+    --bg-light: #eef0f2;      /* Gris Seda Suave (Fondo Claro Limpio y Moderno) */
+    --bg-card-light: #ffffff; /* Blanco Puro para Tarjetas e Imágenes */
+    --bg-dark-header: #11161b;/* Negro Azulado Profundo para Header/Navbar/Footer */
+    --accent-gold: #d4af37;   
+    --accent-wine: #721214;   /* Tu icónico e inmutable Rojo Vino de marca */
+    --text-dark: #1a2129;     /* Gris Oxford Profundo para texto principal */
+    --text-muted: #5e6973;    /* Gris Intermedio para subtítulos y textos secundarios */
+    
+    --font-titles: 'Playfair Display', Georgia, serif;
+    --font-body: 'Lato', 'Raleway', sans-serif;
+    --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* Reset Estricto y Comportamiento Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    background-color: var(--bg-light); /* Toda la página comparte el fondo claro gris seda */
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+hr {
+    display: none; 
+}
+
+/* ==========================================================================
+   HEADER INICIAL (Título de marca superior)
+   ========================================================================== */
+header {
+    background-color: var(--bg-dark-header);
+    padding: 35px 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--accent-wine);
+}
+
+header h1 {
+    font-family: var(--font-titles);
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+header p {
+    color: #929ba3;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+/* ==========================================================================
+   BARRA DE NAVEGACIÓN (Estándar, Fluida y Segura)
+   ========================================================================== */
+.navbar {
+    background-color: var(--bg-dark-header);
+    border-bottom: 1px solid rgba(114, 18, 20, 0.2);
+    padding: 20px 40px;
+    width: 100%;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-titles);
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+}
+
+.logo:hover {
+    color: var(--accent-gold);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: #ffffff;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--accent-gold);
+}
+
+/* ==========================================================================
+   ESTRUCTURA MAIN (Flujo vertical continuo a pantalla completa)
+   ========================================================================== */
+main {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================================
+   SECCIÓN INICIAL: GALERÍA DE PROYECTOS (Alineada a la izquierda en fondo claro)
+   ========================================================================== */
+main > section:first-of-type {
+    background-color: var(--bg-light);
+    text-align: left;
+    padding: 60px 40px 20px 40px; 
+    width: 100%;
+    margin: 0;
+}
+
+main > section:first-of-type h2 {
+    font-family: var(--font-titles);
+    color: var(--text-dark); 
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+main > section:first-of-type p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 800px; 
+}
+
+/* ==========================================================================
+   BLOQUES DE CASAS/CATEGORÍAS (ESTILO CLARO UNIFICADO)
+   ========================================================================== */
+main > section:not(:first-of-type):not(:last-of-type) {
+    background-color: var(--bg-light);
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* Títulos principales de las secciones con tu línea roja vino intacta */
+main > section:not(:first-of-type):not(:last-of-type) > h2 {
+    font-family: var(--font-titles);
+    color: var(--text-dark);
+    font-size: 2.6rem;
+    border-bottom: 3px solid var(--accent-wine); 
+    padding-bottom: 12px;
+    margin-bottom: 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+/* Tarjeta de Información Técnica del Material (Blanco premium con sombra suave) */
+main > section article {
+    background-color: var(--bg-card-light);
+    border-left: 4px solid var(--accent-wine);
+    box-shadow: 0 10px 30px rgba(26, 33, 41, 0.04);
+    padding: 30px;
+    margin-bottom: 60px;
+    width: 100%;
+    max-width: 850px;
+}
+
+main > section article h3 {
+    font-family: var(--font-titles);
+    color: var(--accent-wine); 
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+main > section article p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+
+/* ==========================================================================
+   JUEGO DE POSICIÓN ASIMÉTRICA DE IMÁGENES (FIGURE)
+   ========================================================================== */
+main > section figure {
+    margin-bottom: 60px;
+    background-color: var(--bg-card-light);
+    border: 1px solid rgba(26, 33, 41, 0.06);
+    box-shadow: 0 15px 35px rgba(26, 33, 41, 0.03);
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 70%; 
+}
+
+@media (min-width: 769px) {
+    /* Fotos Impares: Alineadas a la izquierda */
+    main > section figure:nth-of-type(odd) {
+        align-self: flex-start;
+    }
+
+    /* Fotos Pares: Desplazadas sutilmente a la derecha */
+    main > section figure:nth-of-type(even) {
+        align-self: flex-end;
+    }
+    
+    main > section figure:nth-of-type(even) figcaption {
+        text-align: right;
+    }
+}
+
+figure:hover {
+    border-color: var(--accent-wine);
+    box-shadow: 0 20px 40px rgba(114, 18, 20, 0.12);
+}
+
+figure img {
+    width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s var(--transition-smooth);
+}
+
+figure:hover img {
+    transform: scale(1.02);
+}
+
+figcaption {
+    padding: 20px;
+    font-size: 0.9rem;
+    background-color: var(--bg-card-light);
+    color: var(--text-dark);
+    border-top: 1px solid rgba(26, 33, 41, 0.05);
+    font-style: italic;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   CTA CONTACTO FINAL (Mantiene bloque sólido oscuro para el cierre)
+   ========================================================================== */
+main > section:last-of-type {
+    text-align: center;
+    background-color: var(--bg-dark-header);
+    border-top: 4px solid var(--accent-wine);
+    padding: 80px 40px;
+    width: 100%;
+    color: #ffffff;
+}
+
+main > section:last-of-type h2 {
+    font-family: var(--font-titles);
+    font-size: 2.6rem;
+    margin-bottom: 20px;
+}
+
+main > section:last-of-type p:first-of-type {
+    color: #929ba3;
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+}
+
+main > section:last-of-type p strong {
+    color: var(--accent-gold);
+}
+
+main > section:last-of-type a {
+    display: inline-block;
+    font-family: var(--font-body);
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid var(--accent-wine);
+    padding: 14px 45px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.4s var(--transition-smooth);
+}
+
+main > section:last-of-type a:hover {
+    background-color: var(--accent-wine);
+    box-shadow: 0 0 25px rgba(114, 18, 20, 0.5);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+    background-color: #0b0d10;
+    border-top: 1px solid rgba(114, 18, 20, 0.3);
+    padding: 40px 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+footer p:last-of-type {
+    color: #929ba3;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Ajustes Mobile y Tablets)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    main > section:first-of-type {
+        padding: 40px 20px;
+    }
+
+    main > section:first-of-type h2 {
+        font-size: 2.5rem;
+    }
+
+    main > section:not(:first-of-type):not(:last-of-type) {
+        padding: 40px 20px;
+    }
+
+    main > section:not(:first-of-type):not(:last-of-type) > h2 {
+        font-size: 2rem;
+    }
+
+    main > section figure {
+        max-width: 100% !important; 
+        margin-bottom: 30px;
+    }
+}

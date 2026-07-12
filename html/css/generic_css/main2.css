@@ -1,0 +1,389 @@
+/* ==========================================================================
+   OMEGA GRANITE — HOJA DE ESTILOS: CONCEPTO EDITORIAL ASIMÉTRICO
+   ========================================================================== */
+
+/* Variables de Entorno Visual */
+:root {
+    --bg-primary: #11100e;       
+    --bg-secondary: #191715;     
+    --bg-card: #1f1d1a;          
+    --accent-gold: #e2b967;      /* Un dorado con más energía y brillo */
+    --text-white: #ffffff;    
+    --text-muted: #9c958d;    
+    
+    --font-titles: 'Playfair Display', Georgia, serif;
+    --font-body: 'Lato', 'Raleway', sans-serif;
+    --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* Reset Estricto */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    background-color: var(--bg-primary);
+    font-family: var(--font-body);
+    color: var(--text-white);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   NAVBAR: Presentación Asimétrica de Alta Costura
+   -------------------------------------------------------------------------- */
+nav.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px; 
+    z-index: 9999; 
+    background: transparent;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Línea divisoria minimalista */
+}
+
+nav.navbar > .nav-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LOGO: Destacado, sin formato de link y con tipografía de Serif clásica */
+#Nombre_empresa {
+    font-family: var(--font-titles);
+    color: var(--text-white) !important;
+    text-decoration: none !important;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px; /* Efecto moderno compactado */
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#Nombre_empresa::before {
+    content: "Ω";
+    color: var(--accent-gold);
+    font-size: 2.4rem;
+}
+
+/* Menú de navegación flotante estilo bloque */
+nav.navbar > .nav-container > ul.nav-links {
+    display: flex;
+    list-style: none;
+    background: rgba(25, 23, 21, 0.8);
+    padding: 10px 30px;
+    border-radius: 50px; /* Estilo cápsula moderna */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 185, 103, 0.15);
+}
+
+nav.navbar > .nav-container > ul.nav-links > li {
+    margin: 0 15px;
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a {
+    color: var(--text-muted);
+    text-decoration: none !important;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 8px 0;
+    display: inline-block;
+    transition: color 0.3s var(--transition-smooth);
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a:hover {
+    color: var(--text-white);
+}
+
+/* Enlace Inicio Diferenciado */
+nav.navbar > .nav-container > ul.nav-links > li > a#inicio {
+    color: var(--accent-gold) !important;
+}
+
+/* --------------------------------------------------------------------------
+   HERO: Bloque Monolítico
+   -------------------------------------------------------------------------- */
+#hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 750px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alineado a la izquierda para cambiar el orden */
+    justify-content: center;
+    padding: 0 10% 0 10%;
+    background: linear-gradient(90deg, rgba(17, 16, 14, 0.85) 40%, rgba(17, 16, 14, 0.2)), 
+                url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+}
+
+#hero img { display: none; } /* Ocultamos la imagen rota por defecto */
+
+#hero p {
+    font-family: var(--font-titles);
+    color: var(--text-white);
+    font-size: 5.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    max-width: 600px;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+#button_call {
+    font-family: var(--font-body);
+    background-color: transparent;
+    color: var(--text-white);
+    border: 1px solid var(--text-white);
+    padding: 20px 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.4s var(--transition-smooth);
+}
+
+#button_call:hover {
+    background-color: var(--text-white);
+    color: var(--bg-primary);
+    padding: 20px 65px; /* Expansión lateral elegante */
+}
+
+/* --------------------------------------------------------------------------
+   SECCIONES GENERALES
+   -------------------------------------------------------------------------- */
+#nosotros, #servicios, #galeria, #cotizacion {
+    position: relative;
+    width: 100%;
+    padding: 160px 10%;
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   NOSOTROS: Impacto Tipográfico Directo
+   -------------------------------------------------------------------------- */
+#nosotros {
+    background-color: var(--bg-secondary);
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Estilo diseño de revista */
+    gap: 50px;
+    align-items: top;
+}
+
+#nosotros::before {
+    content: "Misión Eternidad.";
+    font-family: var(--font-titles);
+    color: var(--accent-gold);
+    font-size: 2.2rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+#nosotros p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    font-weight: 300;
+    color: var(--text-white);
+    text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+   SERVICIOS: Bloques Tridimensionales Asimétricos
+   -------------------------------------------------------------------------- */
+#servicios {
+    background-color: var(--bg-primary);
+}
+
+.section-title {
+    font-family: var(--font-titles);
+    color: var(--text-white);
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100px;
+    height: 4px;
+    background-color: var(--accent-gold);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.service-card {
+    background-color: var(--bg-card);
+    border-top: 3px solid var(--accent-gold); /* Detalle superior de color */
+    padding: 60px 40px;
+    transition: all 0.4s var(--transition-smooth);
+}
+
+.service-card:hover {
+    background-color: #2a2723;
+    transform: translateY(-10px);
+}
+
+.service-num {
+    display: block;
+    font-family: var(--font-body);
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.service-card h3 {
+    font-family: var(--font-titles);
+    color: var(--text-white);
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.service-card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   GALERÍA: El Portafolio Cinematográfico
+   -------------------------------------------------------------------------- */
+#galeria {
+    background-color: var(--bg-secondary);
+}
+
+#galeria::before {
+    content: "Obras Seleccionadas";
+    display: block;
+    font-family: var(--font-titles);
+    color: var(--text-white);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+}
+
+#galeria img {
+    width: calc(50% - 20px);
+    height: 500px; /* Más altas para lucir los detalles del granito */
+    object-fit: cover;
+    margin: 10px;
+    filter: saturate(0.8);
+    transition: all 0.6s var(--transition-smooth);
+}
+
+#galeria img:hover {
+    filter: saturate(1.1);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+/* --------------------------------------------------------------------------
+   COTIZACIÓN
+   -------------------------------------------------------------------------- */
+#cotizacion { background-color: var(--bg-primary); }
+#cotizacion::after, #cotizacion::before { display: none !important; }
+
+/* --------------------------------------------------------------------------
+   FOOTER: Distribución Limpia de Estudio Profesional
+   -------------------------------------------------------------------------- */
+footer {
+    background-color: #0b0a09;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 100px 10% 40px 10%;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 50px;
+}
+
+.footer-brand h3 {
+    font-family: var(--font-titles);
+    color: var(--accent-gold);
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+.footer-brand p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.footer-contact p {
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.footer-contact strong { color: var(--text-white); }
+
+.footer-social p {
+    color: var(--text-white);
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.footer-social a {
+    color: var(--text-muted);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover { color: var(--accent-gold); }
+
+.footer-bottom {
+    margin-top: 80px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 30px;
+    text-align: center;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN (Móviles)
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    nav.navbar > .nav-container { padding: 0 20px; }
+    nav.navbar > .nav-container > ul.nav-links { display: none; } /* Esconde menú en móvil */
+    
+    #hero { padding: 0 40px; }
+    #hero p { font-size: 3.2rem; }
+    
+    #nosotros { grid-template-columns: 1fr; gap: 20px; }
+    #nosotros p { font-size: 1.2rem; }
+    
+    .section-title { font-size: 2.8rem; }
+    #galeria img { width: 100%; height: 320px; margin: 10px 0; }
+}

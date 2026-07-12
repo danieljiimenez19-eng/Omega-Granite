@@ -1,0 +1,548 @@
+/* ==========================================================================
+   OMEGA GRANITE — HOJA DE ESTILOS: DISTRIBUCIÓN EDITORIAL ASIMÉTRICA
+   ========================================================================== */
+
+:root {
+    /* Base Mineral Sólida */
+    --bg-primary: #191817;       /* Negro Grafito profundo */
+    --bg-secondary: #22201e;     /* Pizarra texturizada */
+    --bg-card: #2a2825;          
+    
+    /* Acentos de Impacto Coherentes */
+    --mineral-red: #8b251e;      /* Rojo Óxido / Granito Iron Red */
+    --mineral-blue: #1b365d;     /* Azul Sodalita / Cuarcita Azul */
+    --accent-gold: #c5a059;      /* Dorado Latón Envejecido */
+    
+    --text-white: #f5f4f0;       /* Blanco Mármol Calacatta */
+    --text-muted: #8e877f;       /* Gris Ceniza */
+    
+    --font-titles: 'Playfair Display', Georgia, serif;
+    --font-body: 'Lato', 'Raleway', sans-serif;
+    --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+/* Reset Estricto */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    background-color: var(--bg-primary);
+    font-family: var(--font-body);
+    color: var(--text-white);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   NAVBAR: Arquitectura de Doble Nivel (Imponente y Centrada)
+   -------------------------------------------------------------------------- */
+nav.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto; 
+    z-index: 9999; 
+    background-color: #11100f;
+    border-bottom: 4px solid var(--mineral-red); /* Base sólida roja */
+    padding: 20px 0 15px 0;
+}
+
+nav.navbar > .nav-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column; /* Cambia a dos niveles verticales */
+    align-items: center;
+    gap: 15px;
+}
+
+/* LOGO: Presencia Central Monumental */
+#Nombre_empresa {
+    font-family: var(--font-titles);
+    color: var(--text-white) !important;         
+    text-decoration: none !important;   
+    font-size: 2.2rem;                  
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: default;                    
+}
+
+#Nombre_empresa:link, #Nombre_empresa:visited, #Nombre_empresa:hover, #Nombre_empresa:active {
+    color: var(--text-white) !important;
+    text-decoration: none !important;
+}
+
+/* MENÚ DISTRIBUIDO ABAJO DEL LOGO */
+nav.navbar > .nav-container > ul.nav-links {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 45px;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 12px;
+}
+
+nav.navbar > .nav-container > ul.nav-links > li {
+    margin: 0;
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a {
+    color: var(--text-muted);
+    text-decoration: none !important; 
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    transition: color 0.3s ease;
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a:hover {
+    color: var(--accent-gold);
+}
+
+/* Indicador de sección activa */
+nav.navbar > .nav-container > ul.nav-links > li > a#inicio {
+    color: var(--text-white) !important; 
+}
+
+/* --------------------------------------------------------------------------
+   HERO SECTION: Imagen Nítida a la Derecha / Texto a la Izquierda
+   -------------------------------------------------------------------------- */
+#hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 750px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alineado a la izquierda para un look de cartelera */
+    justify-content: flex-end; 
+    padding: 0 0 100px 10%;
+    background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+}
+
+#hero img { display: none; }
+
+#hero p {
+    font-family: var(--font-titles);
+    color: var(--text-white);
+    font-size: 5.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    max-width: 750px;
+    text-align: left;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.7); /* Sombra de aislamiento impecable */
+}
+
+#button_call {
+    font-family: var(--font-body);
+    background-color: var(--mineral-red);
+    color: var(--text-white);
+    border: none;
+    padding: 20px 55px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: background-color 0.3s ease;
+}
+
+#button_call:hover {
+    background-color: var(--mineral-blue);
+}
+
+/* --------------------------------------------------------------------------
+   SECCIONES GENERALES (Espaciado Asimétrico Abierto)
+   -------------------------------------------------------------------------- */
+#nosotros, #servicios, #galeria, #cotizacion {
+    position: relative;
+    width: 100%;
+    padding: 160px 10%;
+    clear: both;
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   NOSOTROS: Maquetación Cruzada en Azul Sodalita
+   -------------------------------------------------------------------------- */
+#nosotros {
+    background-color: var(--mineral-blue); 
+    display: grid;
+    grid-template-columns: 1.2fr 2fr; /* Columna izquierda estrecha, derecha ancha */
+    gap: 50px;
+    align-items: start;
+}
+
+#nosotros::before {
+    content: "CONCEPTO \A OMEGA";
+    white-space: pre-wrap; /* Permite el salto de línea del código anterior */
+    font-family: var(--font-titles);
+    color: var(--accent-gold);
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 1px;
+}
+
+#nosotros p {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    line-height: 1.8;
+    font-weight: 300;
+    color: var(--text-white);
+    text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+   SERVICIOS: Estilo "Cortes de Cantera" Lineal (Sin Cajas)
+   -------------------------------------------------------------------------- */
+#servicios {
+    background-color: var(--bg-primary);
+}
+
+.section-title {
+    font-family: var(--font-titles);
+    color: var(--text-white);
+    font-size: 3.8rem;
+    font-weight: 700;
+    margin-bottom: 90px;
+    text-align: left;
+}
+
+/* Convertimos el grid en filas de catálogo arquitectónico */
+.services-grid {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.service-card {
+    background-color: transparent !important; /* Eliminamos el fondo de tarjeta */
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 45px 0;
+    display: grid;
+    grid-template-columns: 100px 1.5fr 2fr; /* Tres columnas perfectas por fila */
+    align-items: center;
+    gap: 30px;
+    transition: padding-left 0.4s var(--transition-smooth);
+}
+
+.service-card:hover {
+    padding-left: 25px; 
+    border-bottom-color: var(--accent-gold) !important; /* La línea divisoria se vuelve dorada */
+}
+
+.service-num {
+    font-family: var(--font-body);
+    color: var(--mineral-red); /* Identificador en rojo óxido agresivo */
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.service-card h3 {
+    font-family: var(--font-titles);
+    color: var(--text-white);
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.service-card p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   GALERÍA: Mosaico de Ritmo Alterno (Tipo Revista de Lujo)
+   -------------------------------------------------------------------------- */
+#galeria {
+    background-color: var(--bg-secondary);
+}
+
+#galeria::before {
+    content: "PORTAFOLIO DE OBRAS";
+    display: block;
+    font-family: var(--font-body);
+    color: var(--accent-gold);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 60px;
+    text-align: left;
+}
+
+/* Rompemos las medidas idénticas para crear asimetría visual */
+#galeria img {
+    width: calc(50% - 20px);
+    height: 500px;
+    object-fit: cover;
+    margin: 10px;
+    transition: transform 0.4s var(--transition-smooth), filter 0.3s ease;
+}
+
+/* Una imagen ancha y una angosta alternadamente */
+#galeria img:nth-child(odd) {
+    width: calc(62% - 20px);
+}
+
+#galeria img:nth-child(even) {
+    width: calc(35% - 20px);
+}
+
+#galeria img:hover {
+    transform: scale(1.015);
+}
+
+/* --------------------------------------------------------------------------
+   COTIZACIÓN
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   COTIZACIÓN: Formulario de Alta Gama (Estilo Editorial Asimétrico)
+   -------------------------------------------------------------------------- */
+#cotizacion {
+    background-color: var(--bg-primary);
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Keeps the asymmetric layout trend */
+    gap: 60px;
+    align-items: start;
+}
+
+/* Form container matching the clean, boxless stone aesthetic */
+#cz {
+    width: 100%;
+    max-width: 700px;
+    background-color: var(--bg-secondary);
+    padding: 50px;
+    border-top: 3px solid var(--mineral-red); /* Sharp iron-red core accent line */
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Hide raw breaks to let CSS layout engine handle the grid fluidly */
+#cz br {
+    display: none !important;
+}
+
+/* Label styling matching the minimalist typographic hierarchy */
+#cz label {
+    display: block;
+    font-family: var(--font-body);
+    color: var(--text-white);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    margin-top: 25px;
+}
+
+/* Reset and style text fields, dropdowns, and textareas */
+#cz input[type="text"],
+#cz input[type="tel"],
+#cz input[type="email"],
+#cz select,
+#cz textarea {
+    width: 100%;
+    background-color: var(--bg-primary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-white);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 16px;
+    border-radius: 0; /* Strict sharp corners for raw stone block feeling */
+    outline: none;
+    transition: border-color 0.4s var(--transition-smooth), box-shadow 0.4s var(--transition-smooth);
+}
+
+/* Custom Dropdown Styling styling */
+#cz select {
+    cursor: pointer;
+    appearance: none; /* Removes native browser styling quirks */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%23c5a059'><polygon points='0,0 10,0 5,5'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+}
+
+/* Textarea handling for project descriptions */
+#cz textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Muted gray placeholders for structural alignment */
+#cz input::placeholder,
+#cz textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+/* Focus States: Smooth transitions to mineral gold borders on interaction */
+#cz input[type="text"]:focus,
+#cz input[type="tel"]:focus,
+#cz input[type="email"]:focus,
+#cz select:focus,
+#cz textarea:focus {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.15);
+}
+
+/* Custom Checkbox Alignment & Layout fixes */
+#cz input[type="checkbox"] {
+    accent-color: var(--mineral-red);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: 12px;
+}
+
+/* Force specific inline layout properties for checkbox label lines */
+#cz #checkb1, 
+#cz #ct {
+    display: inline-block;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    margin: 20px 0 10px 0;
+    cursor: pointer;
+}
+
+/* High-Contrast Luxury Call-to-Action Submit Button */
+#cz input[type="submit"] {
+    display: block;
+    width: 100%;
+    background-color: var(--mineral-red);
+    color: var(--text-white);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 18px;
+    margin-top: 40px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s var(--transition-smooth);
+}
+
+#cz input[type="submit"]:hover {
+    background-color: var(--accent-gold);
+    color: var(--bg-primary);
+    transform: translateY(-2px);
+}
+
+#cz input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE OVERRIDES: Collapsing Asymmetric Layouts
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    #cotizacion {
+        grid-template-columns: 1fr; /* Stacks column components cleanly */
+        padding: 100px 40px;
+        gap: 40px;
+    }
+
+    #cz {
+        padding: 30px 25px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER: Cierre Macizo y Elegante
+   -------------------------------------------------------------------------- */
+footer {
+    background-color: #0c0b0b; 
+    border-top: 2px solid var(--mineral-red);
+    padding: 100px 10% 40px 10%;
+    color: var(--text-muted);
+}
+
+.footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 60px;
+}
+
+.footer-brand h3 {
+    color: #ffffff;
+    font-family: var(--font-titles);
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.footer-brand p {
+    line-height: 1.7;
+}
+
+.footer-contact strong { color: #ffffff; }
+
+.footer-social a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+}
+
+.footer-bottom {
+    margin-top: 80px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding-top: 30px;
+    text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN (Móviles)
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    nav.navbar > .nav-container > ul.nav-links { gap: 20px; flex-wrap: wrap; }
+    
+    #hero { padding-left: 40px; }
+    #hero p { font-size: 3.2rem; }
+    
+    #nosotros { grid-template-columns: 1fr; gap: 20px; }
+    #nosotros::before { content: "CONCEPTO OMEGA"; }
+    
+    .service-card {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 35px 0;
+    }
+    
+    #galeria img, #galeria img:nth-child(odd), #galeria img:nth-child(even) { 
+        width: 100%; 
+        height: 350px; 
+        margin: 15px 0; 
+    }
+}

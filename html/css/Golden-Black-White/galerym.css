@@ -1,0 +1,423 @@
+/* ==========================================================================
+   OMEGA GRANITE — HOJA DE ESTILOS: GALERÍA (ESTRUCTURA ASIMÉTRICA + NAVBAR)
+   ========================================================================== */
+
+/* Variables de Entorno Visual Inmutables */
+:root {
+    --bg-primary: #12110f;    
+    --bg-secondary: #1a1816;  
+    --bg-card: #22201d;       
+    --accent-gold: #d4af37;   
+    --text-white: #f4f1ea;    
+    --text-muted: #a69e94;    
+    
+    --font-titles: 'Playfair Display', Georgia, serif;
+    --font-body: 'Lato', 'Raleway', sans-serif;
+    --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* Reset Estricto y Comportamiento Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    background-color: var(--bg-primary);
+    font-family: var(--font-body);
+    color: var(--text-white);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+hr {
+    display: none; /* Ocultamos los <hr> nativos para usar espaciados limpios */
+}
+
+/* ==========================================================================
+   NAVBAR INTEGRADA
+   ========================================================================== */
+nav.navbar {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 85px; 
+    z-index: 9999; 
+    background-color: rgba(18, 17, 15, 0.95); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Contenedor del menú: Logo a la izquierda, Links a la derecha */
+nav.navbar > .nav-container {
+    max-width: 1200px;
+    height: 85px;
+    margin: 0 auto;
+    padding: 0 25px;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between; 
+}
+
+/* Lista de enlaces */
+nav.navbar > .nav-container > ul.nav-links {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    list-style: none;
+}
+
+nav.navbar > .nav-container > ul.nav-links > li {
+    margin-left: 30px;
+}
+
+/* Enlaces base del menú */
+nav.navbar > .nav-container > ul.nav-links > li > a {
+    color: var(--text-white);
+    text-decoration: none !important; 
+    font-size: 1rem;
+    text-transform: capitalize;
+    position: relative;
+    padding: 10px 0;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+/* LOGO INTEGRADO CON EL SÍMBOLO OMEGA */
+#Nombre_empresa {
+    font-family: var(--font-titles);
+    color: #ffffff !important;         
+    text-decoration: none !important;   
+    font-size: 1.8rem;                  
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;                          
+    cursor: pointer;                    
+}
+
+#Nombre_empresa::before {
+    content: "Ω";
+    color: var(--accent-gold);
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+/* Animación de línea dorada en hover para el menú */
+nav.navbar > .nav-container > ul.nav-links > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-gold);
+    transition: width 0.3s var(--transition-smooth);
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a:hover {
+    color: var(--accent-gold);
+}
+
+nav.navbar > .nav-container > ul.nav-links > li > a:hover::after {
+    width: 100%;
+}
+
+/* Ocultar el header viejo que viene en tu HTML ya que ahora usamos la Navbar */
+header {
+    display: none;
+}
+
+/* ==========================================================================
+   MAIN Y SECCIÓN INTRO
+   ========================================================================== */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 140px 20px 80px 20px; /* Padding superior alto para que la navbar no tape el contenido */
+}
+
+/* Intro principal de la galería */
+main > section:first-of-type {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+main > section:first-of-type h2 {
+    font-family: var(--font-titles);
+    color: var(--accent-gold);
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+main > section:first-of-type p {
+    max-width: 850px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-white);
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   BLOQUES DE CATEGORÍA (Cocinas, Baños, Albercas, etc.)
+   ========================================================================== */
+main > section:not(:first-of-type):not(:nth-last-of-type(2)):not(:last-of-type) {
+    background-color: var(--bg-secondary);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    padding: 40px;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column; /* Flujo interno de la tarjeta */
+}
+
+/* Título de la sección (ej. Cocinas) ocupando todo el ancho arriba */
+main > section:not(:first-of-type) h2 {
+    font-family: var(--font-titles);
+    color: var(--accent-gold);
+    font-size: 2rem;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+/* --- CONTENEDOR SUPERIOR: FOTO 1 A LA IZQUIERDA + TEXTOS A LA DERECHA --- */
+/* Forzamos al HTML a agrupar la primera imagen y los textos a la par usando Flexbox avanzado */
+main > section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* La primera imagen de cada sección */
+main > section > figure:nth-of-type(1) {
+    width: 48%; /* Toma casi la mitad izquierda */
+    margin-bottom: 30px;
+    order: 1; /* Posición estricta 1 */
+}
+
+main > section > figure:nth-of-type(1) img {
+    width: 100%;
+    height: 320px; /* Altura moderada, no tan grande */
+    object-fit: cover;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Forzamos a los párrafos de texto a irse al lado derecho de la primera imagen */
+main > section > p {
+    width: 48%; /* Toma la mitad derecha */
+    margin-left: auto; /* Empuja el texto hacia la derecha */
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: var(--text-white);
+    margin-bottom: 15px;
+    order: 2; /* Posición estricta 2 */
+}
+
+main > section > p strong {
+    color: var(--accent-gold);
+}
+
+/* --- CONTENEDOR INFERIOR: DEMÁS IMÁGENES EN FILA HORIZONTAL --- */
+/* Las imágenes restantes (la 2 y la 3) se van abajo automáticamente al ocupar el 100% de la fila */
+main > section > figure:not(:nth-of-type(1)) {
+    width: 48.5%; /* Se dividen el espacio horizontal inferior equitativamente */
+    margin-top: 10px;
+    background-color: var(--bg-card);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: transform 0.4s var(--transition-smooth), border-color 0.4s ease;
+    order: 3; /* Se van estrictamente abajo de todo */
+}
+
+/* Hacemos las imágenes inferiores a 3/4 partes del tamaño de la primera (320px * 0.75 = 240px) */
+main > section > figure:not(:nth-of-type(1)) img {
+    width: 100%;
+    height: 240px; 
+    object-fit: cover;
+    display: block;
+}
+
+main > section > figure:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-gold);
+}
+
+/* Pies de foto elegantes */
+main > section figcaption {
+    padding: 12px;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    color: var(--text-muted);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   TABLA: GUÍA RÁPIDA DE PIEDRAS
+   ========================================================================== */
+main > section:nth-last-of-type(2) {
+    display: block; /* Resetea el flexbox para que la tabla sea normal */
+    background-color: transparent;
+    padding: 40px 0;
+    margin-top: 20px;
+}
+
+main > section:nth-last-of-type(2) h2 {
+    font-family: var(--font-titles);
+    color: var(--accent-gold);
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 15px;
+    border: none;
+}
+
+main > section:nth-last-of-type(2) p {
+    width: 100%;
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 35px;
+}
+
+main > section table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none !important;
+    background-color: var(--bg-secondary);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+main > section table thead {
+    background-color: var(--bg-card);
+    border-bottom: 2px solid var(--accent-gold);
+}
+
+main > section table th {
+    font-family: var(--font-titles);
+    color: var(--accent-gold);
+    font-size: 1rem;
+    text-align: left;
+    padding: 18px;
+}
+
+main > section table td {
+    padding: 16px;
+    font-size: 0.95rem;
+    color: var(--text-white);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important;
+}
+
+main > section table tbody tr:nth-child(even) {
+    background-color: rgba(34, 32, 29, 0.4);
+}
+
+/* ==========================================================================
+   SECCIÓN: CTA CONTACTO
+   ========================================================================== */
+main > section:last-of-type {
+    display: block;
+    text-align: center;
+    background-color: var(--bg-card);
+    border-top: 3px solid var(--accent-gold);
+    padding: 60px 40px;
+    max-width: 800px;
+    margin: 60px auto 0 auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+main > section:last-of-type h2 {
+    font-family: var(--font-titles);
+    color: var(--text-white);
+    font-size: 2.2rem;
+    border: none;
+    margin-bottom: 20px;
+}
+
+main > section:last-of-type p {
+    width: 100%;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+}
+
+main > section:last-of-type a {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--text-white);
+    border: 2px solid var(--accent-gold);
+    padding: 14px 45px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: background-color 0.4s, box-shadow 0.4s;
+}
+
+main > section:last-of-type a:hover {
+    background-color: var(--accent-gold);
+    color: var(--bg-primary);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+    background-color: #0b0a09;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+footer p {
+    color: var(--text-white);
+    font-size: 0.9rem;
+}
+
+footer p:last-of-type {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Adaptación a Dispositivos Móviles)
+   ========================================================================== */
+@media (max-width: 850px) {
+    nav.navbar > .nav-container > ul.nav-links { display: none; } /* Simplificación de menú en móviles */
+
+    main > section:not(:first-of-type):not(:nth-last-of-type(2)):not(:last-of-type) {
+        padding: 20px;
+    }
+
+    /* En pantallas chicas, colapsamos el diseño a una sola columna ordenada */
+    main > section > figure:nth-of-type(1),
+    main > section > p,
+    main > section > figure:not(:nth-of-type(1)) {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+
+    main > section > figure:nth-of-type(1) img,
+    main > section > figure:not(:nth-of-type(1)) img {
+        height: 250px; /* Alturas homogéneas para celulares */
+    }
+
+    main > section table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
